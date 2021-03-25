@@ -37,11 +37,11 @@ fs.readFile(file, 'utf8', (err, data) => {
     const a2 = new Vector3(vertices[triangle.a].x, vertices[triangle.a].y, vertices[triangle.a].z)
     const b = new Vector3(vertices[triangle.b].x, vertices[triangle.b].y, vertices[triangle.b].z)
     const c = new Vector3(vertices[triangle.c].x, vertices[triangle.c].y, vertices[triangle.c].z)
-    const x = new Vector3(a1.substract(b))
-    const y = new Vector3(a2.substract(c))
-    const f = x.cross(y)
-    const length = f.length()/2
-    total+=length
+    const differenceAB = new Vector3(a1.substract(b))
+    const differenceAC = new Vector3(a2.substract(c))
+    const cross = differenceAB.cross(differenceAC)
+    const area = cross.length()/2
+    total+=area
   })
   console.log(Number.parseFloat(total).toFixed(3));
 })
